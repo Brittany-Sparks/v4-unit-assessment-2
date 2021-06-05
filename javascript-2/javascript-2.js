@@ -35,7 +35,10 @@ let foods = [
   and then adding the results together. 
 */
 
-//CODE HERE
+foods.forEach((element) => {
+  element.Calories = (element.carbs * 4) + (element.protein * 4) + (element.fat * 9);
+})
+console.log(foods)
 
 //////////////////////////////////PROBLEMS 2-4//////////////////////////////////
 /*
@@ -80,8 +83,11 @@ const products = [
   Save the copy to a new variable called 'saleProducts'.
 */
 
-//CODE HERE
-
+let saleProducts = products.map((product)=> {
+console.log('element.price', product.price)
+product.price = product.price * .75
+return product
+})
 ////////////////////PROBLEM 3////////////////////
 /*
   A customer has placed an order - they want one of every product that has blue on it. 
@@ -90,7 +96,10 @@ const products = [
   (Hint: look up the array method 'includes' on MDN)
 */
 
-//CODE HERE
+let blueProducts = saleProducts.filter((product)=> {
+  console.log('element.color', product.color)
+  product.color = product.color = 'blue'
+})
 
 ////////////////////PROBLEM 4////////////////////
 /*
@@ -99,7 +108,11 @@ const products = [
   Save the result to a variable called orderTotal.
 */
 
-//CODE HERE
+let orderTotal = blueProducts.reduce((acc, cur) => {
+
+return acc+cv.price;
+
+},0);
 
 //////////////////////////////////PROBLEMS 5-8//////////////////////////////////
 /*
@@ -129,7 +142,9 @@ const shippingInfo = {
   that combines the contactInfo and shippingInfo objects.
 */
 
-//CODE HERE
+const helensInfo  = Object.assign(contactInfo, shippingInfo);
+
+
 
 ////////////////////PROBLEM 6////////////////////
 /*
@@ -138,14 +153,17 @@ const shippingInfo = {
   Overwrite the name property to 'Ellen' and the email address to 'ellen@email.com'.
 */
 
-//CODE HERE
+
+const ellensInfo = {...helensInfo, name:'Ellen', email:'ellen@email.com' };
+
+
 
 ////////////////////PROBLEM 7////////////////////
 /* 
   Save Ellen's email to a new variable using destructuring.
 */
 
-//CODE HERE
+var email = ellensInfo.email;
 
 ////////////////////PROBLEM 8////////////////////
 /*
@@ -153,7 +171,11 @@ const shippingInfo = {
   from shippingInfo to new variables using destructuring.
 */
 
-//CODE HERE
+//const {zipCode:zip, state: st} = shippingInfo;
+
+// var  newNew = shippingInfo.zipCode
+
+ const firstElement = shippingInfo.zipCode; const secondElement = shippingInfo.state;
 
 //////////////////////////////////PROBLEMS 9-11//////////////////////////////////
 /*
@@ -215,15 +237,14 @@ const userInfo = {
   using dot notation.
 */
 
-//CODE HERE
+var  shouldAlert = userInfo.settings.alerts; 
 
 ////////////////////PROBLEM 10////////////////////
 /*
   Set the value of topic below to the last item in gn@rly_c0der_007's topics array
   using dot and/or bracket notation.
 */
-
-//CODE HERE
+var topic = userInfo.topics[userInfo.topics.length-1];
 
 ////////////////////PROBLEM 11////////////////////
 /*
@@ -231,7 +252,8 @@ const userInfo = {
   gn@rly_c0der_007's 2nd comment using dot/bracket notation.
 */
 
-//CODE HERE
+var commenterId = userInfo.comments[1].responses[0].userId;
+
 
 ////////////////////PROBLEM 12////////////////////
 /*
@@ -250,8 +272,22 @@ const userInfo = {
       - create at least 2 kid objects
 */
 
-//CODE HERE
+var person = {
+  name: 'Brittany',
+  age:31, 
+  jobs: ['server', 'bartender', 'coder'],
+  birthday: function(){
+    this.age++
+  } ,
+  favorites: {
+    color: 'black',
+    number: 5,
+    book: 'book',
+  },
+  kids: [{'name': 'Caembria', 'age': 7},{'name': 'Carter',  'age': 1}]
 
+
+};
 //////////////////////////////////PROBLEMS 13-14//////////////////////////////////
 /*
   For the last two problems, you will be determining the 
@@ -276,7 +312,7 @@ const workout = {
 //let context1 = myFunc
 //let context1 = window
 //let context1 = global
-// let context1 = workout
+let context1 = workout
 
 ////////////////////PROBLEM 14////////////////////
 /*
@@ -289,6 +325,6 @@ function myFunc() {
 }
 
 //let context2 = myFunc
-// let context2 = window
+ let context2 = window
 //let context2 = global
 //let context2 = workout
